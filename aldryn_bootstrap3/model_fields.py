@@ -166,7 +166,7 @@ class LinkMixin(models.Model):
             ref_page = self.link_page
             link = ref_page.get_absolute_url()
 
-            if ref_page.site_id != self.page.node.site_id:
+            if ref_page.node.site_id != self.page.node.site_id:
                 ref_site = Site.objects._get_site_by_id(ref_page.site_id)
                 link = '//{}{}'.format(ref_site.domain, link)
         elif self.link_url:
